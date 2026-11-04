@@ -1,0 +1,68 @@
+======================================================================
+10. KẾT LUẬN
+======================================================================
+
+1. SO SÁNH CÁC MÔ HÌNH PRE-TRAINED
+- ResNet18: Độ chính xác Validation đạt 56.00%, độ chính xác Test đạt 55.80%.
+- VGG16: Độ chính xác Validation đạt 68.00%, độ chính xác Test đạt 66.20%.
+- DenseNet121: Độ chính xác Validation đạt 62.80%, độ chính xác Test đạt 57.00%.
+=> VGG16 là mô hình có kết quả tốt nhất trong nhóm Transfer Learning, với độ chính xác Test đạt 66.20%.
+
+2. PHÂN TÍCH SIÊU THAM SỐ
+- Learning Rate = 0.001, Batch Size = 32, Optimizer = Adam: Validation Accuracy đạt 58.40%.
+- Learning Rate = 0.0001, Batch Size = 64, Optimizer = Adam: Validation Accuracy đạt 31.00%.
+=> Cấu hình tốt nhất trong thí nghiệm là Learning Rate = 0.001, Batch Size = 32, Optimizer = Adam.
+Lưu ý: Learning Rate và Batch Size được thay đổi đồng thời, do đó chưa thể xác định ảnh hưởng riêng của từng thông số.
+
+3. ĐÁNH GIÁ QUÁ TRÌNH HUẤN LUYỆN BẰNG TENSORBOARD
+- Thí nghiệm: densenet121_transfer_learning_Adam_lr0.001
+  + Loss/Train: Giá trị đầu = 1.9439, giá trị cuối = 0.9090.
+  + Loss/Validation: Giá trị đầu = 1.4915, giá trị cuối = 1.1064.
+  + Accuracy/Train: Giá trị đầu = 32.9500, giá trị cuối = 70.4000.
+  + Accuracy/Validation: Giá trị đầu = 49.4000, giá trị cuối = 62.8000.
+- Thí nghiệm: resnet18_fine_tuning_adam_lr0.0001
+  + Loss/Train: Giá trị đầu = 1.5846, giá trị cuối = 0.1882.
+  + Loss/Validation: Giá trị đầu = 1.0872, giá trị cuối = 0.8119.
+  + Accuracy/Train: Giá trị đầu = 46.8000, giá trị cuối = 96.0000.
+  + Accuracy/Validation: Giá trị đầu = 65.8000, giá trị cuối = 74.8000.
+- Thí nghiệm: resnet18_lr0.0001_bs64_Adam
+  + Loss/Train: Giá trị đầu = 2.5129, giá trị cuối = 2.1068.
+  + Loss/Validation: Giá trị đầu = 2.3661, giá trị cuối = 2.0193.
+  + Accuracy/Train: Giá trị đầu = 13.1000, giá trị cuối = 23.5000.
+  + Accuracy/Validation: Giá trị đầu = 15.0000, giá trị cuối = 31.0000.
+- Thí nghiệm: resnet18_lr0.001_bs32_Adam
+  + Loss/Train: Giá trị đầu = 2.0564, giá trị cuối = 1.0964.
+  + Loss/Validation: Giá trị đầu = 1.5716, giá trị cuối = 1.2792.
+  + Accuracy/Train: Giá trị đầu = 27.6500, giá trị cuối = 63.5000.
+  + Accuracy/Validation: Giá trị đầu = 45.2000, giá trị cuối = 58.4000.
+- Thí nghiệm: resnet18_transfer_learning_Adam_lr0.001
+  + Loss/Train: Giá trị đầu = 1.9966, giá trị cuối = 1.0946.
+  + Loss/Validation: Giá trị đầu = 1.5523, giá trị cuối = 1.2557.
+  + Accuracy/Train: Giá trị đầu = 31.1500, giá trị cuối = 62.8500.
+  + Accuracy/Validation: Giá trị đầu = 48.2000, giá trị cuối = 56.0000.
+- Thí nghiệm: vgg16_transfer_learning_Adam_lr0.001
+  + Loss/Train: Giá trị đầu = 1.3056, giá trị cuối = 0.6001.
+  + Loss/Validation: Giá trị đầu = 0.8951, giá trị cuối = 0.9721.
+  + Accuracy/Train: Giá trị đầu = 57.7000, giá trị cuối = 78.1500.
+  + Accuracy/Validation: Giá trị đầu = 71.4000, giá trị cuối = 68.0000.
+TensorBoard hỗ trợ theo dõi Loss và Accuracy trên tập Train và Validation qua từng epoch, từ đó quan sát quá trình hội tụ và dấu hiệu overfitting.
+
+4. SO SÁNH TRANSFER LEARNING VÀ FINE-TUNING
+- Transfer Learning: 55.80%.
+- Fine-Tuning: 71.60%.
+=> Fine-Tuning giúp tăng độ chính xác thêm 15.80 điểm phần trăm so với Transfer Learning.
+
+5. HẠN CHẾ CỦA THỰC NGHIỆM
+- Thiết bị huấn luyện: cpu.
+- Chế độ Quick Run: True.
+- Kích thước ảnh: 64 x 64.
+- Số epoch so sánh mô hình: 5.
+- Số epoch thử nghiệm siêu tham số: 5.
+- Số ảnh Train: 2000.
+- Số ảnh Validation: 500.
+- Số ảnh Test: 500.
+Do giới hạn tài nguyên phần cứng và số lượng dữ liệu sử dụng, kết quả thực nghiệm có thể chưa phản ánh đầy đủ khả năng tổng quát hóa của các mô hình.
+
+======================================================================
+HOÀN THÀNH TẠO KẾT LUẬN
+======================================================================

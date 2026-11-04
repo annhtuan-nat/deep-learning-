@@ -1,0 +1,4 @@
+model,mode,learning_rate,batch_size,optimizer,train_accuracy,validation_accuracy,validation_loss,checkpoint
+resnet18,transfer_learning,0.001,32,Adam,62.85,56.0,1.2557488508224488,checkpoints\resnet18_transfer_learning_Adam_lr0.001_best.pth
+vgg16,transfer_learning,0.001,32,Adam,78.15,68.0,0.9721336402893066,checkpoints\vgg16_transfer_learning_Adam_lr0.001_best.pth
+densenet121,transfer_learning,0.001,32,Adam,70.4,62.8,1.1063797883987427,checkpoints\densenet121_transfer_learning_Adam_lr0.001_best.pth

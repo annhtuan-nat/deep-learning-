@@ -1,0 +1,5 @@
+model,mode,test_loss,test_accuracy
+resnet18,transfer_learning,1.286023730278015,55.8
+vgg16,transfer_learning,1.0278967819213867,66.2
+densenet121,transfer_learning,1.2759764289855957,57.0
+resnet18,fine_tuning,0.87964213180542,71.6
